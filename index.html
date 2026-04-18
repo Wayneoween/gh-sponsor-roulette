@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sponsor Roulette 🎲</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <header>
+    <h1>Sponsor Roulette <span class="dice">🎲</span></h1>
+    <p class="tagline">Do you want to give back to the community?</p>
+    <p class="tagline">Spin the wheel on your starred repos that accept sponsorship.</p>
+  </header>
+
+  <section id="auth">
+    <div class="section-header">
+      <h2>GitHub token<span class="check"> ✓</span></h2>
+      <span class="compact-note">stored in your browser only, never sent anywhere except github.com</span>
+      <button id="forget-token" class="secondary compact-action">Forget</button>
+    </div>
+    <p class="hint full-only">
+      Generate a classic PAT at
+      <a href="https://github.com/settings/tokens" target="_blank" rel="noopener">github.com/settings/tokens</a>.
+      Tick <code>public_repo</code> (required for funding info), and <code>read:user</code> if you star privately too.
+      Stored only in your browser's <code>localStorage</code>. Never sent anywhere except github.com.
+    </p>
+    <div class="row full-only">
+      <input type="password" id="token-input" placeholder="ghp_..." autocomplete="off">
+      <button id="save-token">Save</button>
+    </div>
+    <p id="token-status" class="status full-only"></p>
+  </section>
+
+  <section id="load" class="disabled">
+    <div class="section-header">
+      <h2>Load your stars<span id="load-summary" class="check"></span></h2>
+      <button id="refresh-stars" class="secondary compact-action">Refresh</button>
+    </div>
+    <div class="row full-only">
+      <button id="load-stars">Load my starred repos</button>
+    </div>
+    <p id="load-status" class="status full-only"></p>
+  </section>
+
+  <section id="spin" class="disabled">
+    <h2>Spin</h2>
+    <div class="row">
+      <label for="pick-count">How many to pick:</label>
+      <input type="number" id="pick-count" min="1" value="1">
+      <button id="spin-button" disabled>Spin 🎲</button>
+    </div>
+  </section>
+
+  <section id="results" class="disabled">
+    <h2>Your sponsor candidates</h2>
+    <div id="results-container"></div>
+  </section>
+</main>
+
+<script src="helpers.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
